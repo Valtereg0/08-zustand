@@ -20,7 +20,7 @@ const Metadata = {
   openGraph: {
     title: "NoteHub",
     description: "Stay organized and inspired with NoteHub — your smart digital space for capturing ideas, writing notes, and managing tasks with ease.",
-    url:"",
+    url:"https://08-zustand-nenn.vercel.app",
 
     images: [
       {
