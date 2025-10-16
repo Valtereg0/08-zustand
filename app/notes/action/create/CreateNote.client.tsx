@@ -1,7 +1,7 @@
 "use client";
 
 import NoteForm from "@/components/NoteForm/NoteForm";
-import css from "./createNote.client.module.css";
+import css from "./CreateNote.module.css";
 
 export default function CreateNoteClient() {
   return (
