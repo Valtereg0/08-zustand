@@ -14,7 +14,7 @@ const roboto = Roboto({
   display: "swap",
 });
 
-const Metadata = {
+export const metadata: Metadata = {
   title: "NoteHub",
   description: "NoteHub is a convenient and accessible tool where you can take notes, make summatirs and use it for everyday life - to record, store and edit your entries.",
   openGraph: {
@@ -34,13 +34,6 @@ const Metadata = {
 };
 
 
-
-
-export const metadata: Metadata = {
-  title: "NoteHub",
-  description: "Simple note management app",
-};
-
 export default function RootLayout({
   children,
   modal, 
@@ -50,7 +43,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${roboto.variable}`}>
+      <body className={`${roboto.variable}`}>
         <TanStackProvider>
           <Header />
           <main>{children}</main>

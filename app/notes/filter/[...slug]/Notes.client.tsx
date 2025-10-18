@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useQuery, useQueryClient, keepPreviousData } from "@tanstack/react-query";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { useDebounce } from "use-debounce";
 import { fetchNotes } from "@/lib/api";
 import type { FetchNotesResponse } from "@/types/note";
@@ -9,8 +9,6 @@ import type { FetchNotesResponse } from "@/types/note";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import Pagination from "@/components/Pagination/Pagination";
 import NoteList from "@/components/NoteList/NoteList";
-import Modal from "@/components/Modal/Modal";
-import NoteForm from "@/components/NoteForm/NoteForm";
 import css from "./NotesPage.module.css";
 import Link from "next/link";
 
@@ -20,9 +18,7 @@ export default function App({ tag }: { tag?: string }) {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [debouncedSearch] = useDebounce(search, 500);
-  const [isOpen, setIsOpen] = useState(false);
 
-    const queryClient = useQueryClient();
     
     const PerPage = 12;
 
@@ -78,18 +74,8 @@ export default function App({ tag }: { tag?: string }) {
       {notes.length > 0 ? (
         <NoteList notes={notes} />
       ) : (
-        !isLoading && !isFetching && <p style={{ padding: 16 }}>No notes yet</p>
-      )}
-
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <NoteForm
-          onCancel={() => setIsOpen(false)}
-          onCreated={() => {
-            setIsOpen(false);
-            queryClient.invalidateQueries({ queryKey: ['notes'] });
-          }}
-        />
-      </Modal>
+        !isLoading && !isFetching && <p style={{ padding: 16 }}>No notes yet</p>)
+      }
     </div>
   );
 }
